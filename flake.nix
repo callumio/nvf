@@ -101,7 +101,7 @@
                 formatOnSave = true;
                 lspSignature.enable = true;
                 lspconfig.enable = true;
-                #lsplines.enable = true;
+                lsplines.enable = true;
                 null-ls.enable = true;
                 mappings = {
                   codeAction = "<leader>vca";
