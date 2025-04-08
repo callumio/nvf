@@ -158,7 +158,7 @@
 
                 bash.enable = true;
 
-                ocaml.enable = true;
+                ocamle.enable = true;
               };
             };
           }
