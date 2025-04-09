@@ -149,7 +149,9 @@
                 python.enable = true;
 
                 ts.enable = true;
+
                 markdown.enable = true;
+                typst.enable = true;
 
                 nix.enable = true;
 
