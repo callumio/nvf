@@ -71,7 +71,7 @@
               theme.enable = false;
               #theme.name = "onedark";
               lazy.enable = true;
-              extraPackages = with nvimconf.pkgs; [buf];
+              extraPackages = with nvimconf.pkgs; [protolint];
               extraPlugins = {
                 "onedark.nvim" = {
                   package = nixpkgs.legacyPackages."x86_64-linux".vimPlugins.onedark-nvim;
@@ -112,8 +112,8 @@
                 lspconfig.enable = true;
                 null-ls.enable = true;
                 null-ls.setupOpts.sources = [
-                  (nixpkgs.lib.generators.mkLuaInline ''require("null-ls").builtins.diagnostics.buf'')
-                  (nixpkgs.lib.generators.mkLuaInline ''require("null-ls").builtins.formatting.buf'')
+                  (nixpkgs.lib.generators.mkLuaInline ''require("null-ls").builtins.diagnostics.protolint'')
+                  (nixpkgs.lib.generators.mkLuaInline ''require("null-ls").builtins.formatting.protolint'')
                 ];
                 mappings = {
                   codeAction = "<leader>vca";
