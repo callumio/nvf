@@ -10,9 +10,15 @@
         modules = [
           {
             config.vim = {
+              diagnostics = {
+                enable = true;
+                config = {
+                  virtual_lines = true;
+                  virtual_text = false;
+                };
+              };
               luaConfigPre = ''
-                vim.lsp.inlay_hint.enable(true)
-                vim.diagnostic.config({virtual_lines=true, virtual_text=true})
+                vim.diagnostic.config({virtual_lines=true, virtual_text=false})
               '';
               undoFile.enable = true;
               keymaps = [
@@ -60,10 +66,12 @@
                 autoindent = false;
               };
 
-              useSystemClipboard = true;
+              clipboard.enable = true;
+              clipboard.providers.wl-copy.enable = true;
               theme.enable = false;
-              theme.name = "onedark";
+              #theme.name = "onedark";
               lazy.enable = true;
+              extraPackages = with nvimconf.pkgs; [buf];
               extraPlugins = {
                 "onedark.nvim" = {
                   package = nixpkgs.legacyPackages."x86_64-linux".vimPlugins.onedark-nvim;
@@ -98,11 +106,15 @@
               };
               lsp = {
                 enable = true;
+                inlayHints.enable = true;
                 formatOnSave = true;
                 lspSignature.enable = true;
                 lspconfig.enable = true;
-                lsplines.enable = true;
                 null-ls.enable = true;
+                null-ls.setupOpts.sources = [
+                  (nixpkgs.lib.generators.mkLuaInline ''require("null-ls").builtins.diagnostics.buf'')
+                  (nixpkgs.lib.generators.mkLuaInline ''require("null-ls").builtins.formatting.buf'')
+                ];
                 mappings = {
                   codeAction = "<leader>vca";
                   goToDefinition = "gd";
@@ -137,7 +149,6 @@
                 enableDAP = true;
                 enableExtraDiagnostics = true;
                 enableFormat = true;
-                enableLSP = true;
                 enableTreesitter = true;
 
                 rust = {
