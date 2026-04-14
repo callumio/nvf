@@ -175,6 +175,8 @@
 
                 bash.enable = true;
 
+                go.enable = true;
+
                 ocaml.enable = true;
 
                 zig.enable = true;
