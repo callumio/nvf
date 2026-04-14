@@ -176,6 +176,8 @@
                 bash.enable = true;
 
                 ocaml.enable = true;
+
+                zig.enable = true;
               };
             };
           }
