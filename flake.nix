@@ -153,8 +153,12 @@
 
                 rust = {
                   enable = true;
-                  crates.enable = true;
+                  extensions = {
+                    crates-nvim.enable = true;
+                  };
                 };
+
+                assembly.enable = true;
 
                 lua.enable = true;
                 python.enable = true;
